@@ -1,6 +1,7 @@
 import  React,{Component} from 'react';
 import { Button, View, Text, StyleSheet } from 'react-native';
 import SearchInput from './../components/SearchInput';
+import Accordion from './../components/Accordion'
 
 export default class HomeScreen extends Component {
     constructor({ navigation }){
@@ -9,7 +10,7 @@ export default class HomeScreen extends Component {
     render(){
         return (
             <View style={style.homeScreenContainer}>       
-                <SearchInput/>            
+                <SearchInput/>      
             </View>
         );
     }

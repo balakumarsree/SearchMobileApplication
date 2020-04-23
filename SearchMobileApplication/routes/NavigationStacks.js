@@ -1,9 +1,10 @@
 import React from 'react';
-import {createStackNavigator} from '@react-navigation/stack';
+import {createStackNavigator, TransitionPresets,CardStyleInterpolators} from '@react-navigation/stack';
 import HomeScreen from '../screens/Home';
 import ProfileScreen from '../screens/Profile';
 import SupportScreen from '../screens/Support';
 import ScreenHeader from './../components/Header';
+
 
 const Stack = createStackNavigator();
 const HomeStackNavigator = ({navigation}) => {
@@ -12,7 +13,9 @@ const HomeStackNavigator = ({navigation}) => {
       <Stack.Navigator initialRouteName="Home">
         <Stack.Screen 
             name="Home" 
-            component={HomeScreen} options={{
+            component={HomeScreen} 
+            
+            options={{
                 header : ()=><ScreenHeader headerTitle='Search' isHome='true' navigation={navigation} />,
 
             }}
@@ -48,10 +51,8 @@ const SupportStackNavigator = ({navigation}) => {
             component={SupportScreen} 
             options={{
                 header : ()=><ScreenHeader headerTitle='Support' isHome='false' navigation={navigation} />,
-
             }}
-        />
-        
+        />        
       </Stack.Navigator>
     )
 }
