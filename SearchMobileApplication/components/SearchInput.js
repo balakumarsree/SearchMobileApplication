@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, ScrollView, TouchableOpacity, Button } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, TouchableOpacity } from 'react-native';
 import SearchInput, { createFilter } from 'react-native-search-filter';
 import {Base64} from 'js-base64';
+import {TouchableRipple} from 'react-native-paper'
 
 const KEYS_TO_FILTERS = ['name', 'area'];
  
@@ -16,8 +17,16 @@ export default class SearchInputText extends Component{
     }
   }
   searchUpdated(term) {
-    this.setState({ searchTerm: term })
+    if(this.state.searchTerm != '' ){
+      this.setState({ searchTerm: term })
+    }
+    else{
+      this.setState({ IsTyped: false })
+    }
   }
+
+
+
   componentDidMount(){
 
     let dataSource = [];
@@ -34,6 +43,7 @@ export default class SearchInputText extends Component{
       });
     
   }
+  
   render() {
     const filteredCustomers = this.state.Customers.filter(createFilter(this.state.searchTerm, KEYS_TO_FILTERS))
     return (
@@ -52,7 +62,7 @@ export default class SearchInputText extends Component{
         <ScrollView>
           {filteredCustomers.map(customer => {
             return (
-              <TouchableOpacity 
+              <TouchableRipple
                 onPress={()=>{this.setState({selectedItem:customer.name,IsTyped:false})}} 
                 key={customer.id} 
                 style={styles.customerItem}>
@@ -60,7 +70,7 @@ export default class SearchInputText extends Component{
                   <Text>{customer.name}</Text>        
                   <Text style={styles.customerSubject}>{customer.area}</Text>              
                 </View>
-              </TouchableOpacity>
+              </TouchableRipple>
             )
           })}          
         </ScrollView>

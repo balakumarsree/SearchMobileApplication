@@ -1,18 +1,18 @@
 import React from 'react';
-import {StyleSheet, Image, View, Text, TouchableOpacity} from 'react-native';
+import {StyleSheet, Image, View, Text, TouchableOpacity, TouchableWithoutFeedback} from 'react-native';
 
 function ScreenHeader(props){    
         return(           
           <View style={headerStyles.headerContainer}>
             <View  style={headerStyles.headerIconColumn}>
               {props.isHome === 'true'?
-                <TouchableOpacity onPress={()=>{props.navigation.openDrawer()}}><Image 
+                <TouchableWithoutFeedback onPress={()=>{props.navigation.openDrawer()}}><Image 
                       style={headerStyles.headerIcon} 
-                      source={require('./../assets/images/menu-white.png')} /></TouchableOpacity> 
+                      source={require('./../assets/images/menu-white.png')} /></TouchableWithoutFeedback> 
                     :
-                    <TouchableOpacity onPress={()=>{props.navigation.navigate('Home')}}><Image 
+                    <TouchableWithoutFeedback onPress={()=>{props.navigation.navigate('Home')}}><Image 
                       style={headerStyles.headerIconBack} 
-                      source={require('./../assets/images/back-button.png')} /></TouchableOpacity> 
+                      source={require('./../assets/images/back-button.png')} /></TouchableWithoutFeedback> 
                }
             </View>
             <View style={headerStyles.headerTitleColumn}>
